@@ -13,8 +13,8 @@ todos = ['todo 1', 'todo2', 'todo3']
 
 
 class LoginForm(FlaskForm):
-  username = StringField("Nombre de Usuario", validators=[DataRequired])
-  password = PasswordField("Password", validators=[DataRequired])
+  username = StringField("Nombre de Usuario", validators=[DataRequired()])
+  password = PasswordField("Password", validators=[DataRequired()])
   submit = SubmitField("Enviar")
 
 @app.errorhandler(404)
@@ -29,7 +29,7 @@ def index():
   return response
 
 
-@app.route('/hello')
+@app.route('/hello', methods=['GET','POST'])
 def Hello():
 
   user_ip = session.get('user_ip')
