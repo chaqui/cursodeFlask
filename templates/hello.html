@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% import "macros.html" as macros %}
+{% import "bootstrap/wtf.html" as  wtf %}
 
 {% block title %}Bienvenida{% endblock %}
 {% block cuerpo %}
@@ -14,4 +15,8 @@
     {{macros.render_todo(todo)}}
     {% endfor %}
 </ul>
+
+<div class="container">
+  {{wtf.quick_form(login)}}
+</div>
 {% endblock %}
