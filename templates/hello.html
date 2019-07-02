@@ -1,19 +1,12 @@
-{% extends "bootstrap/base.html" %}
-{% import "macros.html" as macros %}
-{% import "bootstrap/wtf.html" as  wtf %}
-
-{% block head %}
-  {{super()}}
-  <title>Bienvenida</title>
-{% endblock %}
-
-{% block body %}
-  {% block navbar %}
-    {% include "navbar.html" %}
-  {% endblock %}
- 
+{% extends "base.html" %}
+  {% import "macros.html" as macros %}
+  {% import "bootstrap/wtf.html" as  wtf %}
+{% block content %}
+  {% if username %}
+    <h1>Bienvenido {{username | capitalize}}</h1>
+  {% endif %}
   {% if user_ip %}
-    <h1>Hello World sss Platzi, su IP es {{user_ip}}</h1>
+    <h3>Hello World Platzi, su IP es {{user_ip}}</h3>
   {% else %}
     <a href="{{url_for('index')}}">Ir a inicio</a>
   {% endif %}

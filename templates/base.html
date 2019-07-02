@@ -1,18 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>
-    {% block title %} Flask Platzi |{% endblock %}
+{% extends "bootstrap/base.html" %}
+{% block head %}
+  {{super()}}
+  <title>Bienvenida</title>
+{% endblock %}
 
-  </title>
-</head>
-<body>
-  <header>
+{% block body %}
+  {% block navbar %}
     {% include "navbar.html" %}
-  </header>
-  {% block cuerpo %}{% endblock %}
-</body>
-</html>
+  {% endblock %}
+  {% for message in get_flashed_messages() %}
+  <div class="alert alert-success alert-dismissible">
+            <button type="button"
+                    data-dismiss="alert"
+                    class="close">&times;</button>
+            {{ message }}
+        </div>
+  {% endfor %}
+  {% block content %}
+    
+  {% endblock %}
+  {% block scripts %}
+    {{ super() }}
+  {% endblock %}
+{% endblock %} 
