@@ -3,6 +3,7 @@ from flask_bootstrap import Bootstrap
 from flask_wtf import FlaskForm
 from wtforms.fields import StringField, PasswordField, SubmitField
 from wtforms.validators import DataRequired
+import unittest
 
 app = Flask(__name__)
 
@@ -51,6 +52,10 @@ def Hello():
   print(context)
   return render_template('hello.html', **context)
 
+@app.cli.command()
+def test():
+  tests = unittest.TestLoader().discover('tests')
+  unittest.TextTestRunner().run(tests)
 
 
 if __name__ == "__main__":
